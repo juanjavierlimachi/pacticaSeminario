@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block lista_cursos %}
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
+  	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js"></script>
+  	<link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/uniform.agent.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/jquery-ui-1.10.4.custom.css">
+    
+
+<script type='text/javascript'>
+    // On load, style typical form elements
+    $(function () {
+        $(" select, input, button").uniform();
+    });
+</script>
+
+<div id="listCursos">
+<h3 align="center">CURSOS ACTUALES</h3>
+<table border="1" align="center">
+	<tr><td>Nomina de Cusros</td></tr>
+	{% for curso in cursos %}
+	<tr><td>{{curso.nombre_Curso}}</td>
+		<td><a href="http://localhost:9595/editarCurso/{{curso.id}}/"><input type="submit" name="bregistro" value="editar"></a></td>
+		<td><a href="/borrarCurso/{{curso.id}}/"><input type="submit" name="bregistro" value="eliminar"></a></td>
+		<td><a href="/VerAlumnos/{{curso.id}}/"><input type="submit" name="bregistro" value="ver alumnos"></a></td>
+		<td><a href="/Materias/{{curso.id}}/"><input type="submit" name="bregistro" value="ver materias del curso"></a></td>
+		
+	</tr>
+	{% endfor %}
+	</table>
+</div>
+{% endblock %}

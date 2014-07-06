@@ -1,0 +1,17 @@
+{% extends "profesor/ingreso.html" %}
+{% block comentario %}
+<!--AKI PONEMOS EN SCRIPT PARA VALIDAR LOS ARCHIVOS-->
+<link rel="stylesheet" type="text/css" media="screen" href="/static/css/todoProf.css">
+<div id="coment">
+	
+		<form id='formulario' method='POST' enctype='multipart/form-data' action=''>
+			{% csrf_token %}
+			<tr><td>{{ formulario.as_p }}</td></tr>
+			<tr><td align="center"><input type='submit' value='confirmar'>
+				<input type="reset" name="cancelar" value="Cancelar">
+				</td>
+			</tr>
+		</form>
+	
+</div>
+{% endblock %}

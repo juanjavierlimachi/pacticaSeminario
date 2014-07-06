@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inicio</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/acordion.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/formulasdirec.css">
+
+     <script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery.idealforms.min.js"></script>
+  <script type="text/javascript" src="{{STATIC_URL}}js/jquery.idealforms.min.css"></script>
+  <script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/uniform.aristo.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/jquery-ui-1.10.4.custom.css">
+
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#fecha1').datepicker({
+          changeMonth: true,
+          changeYear: true
+        });
+      });
+      </script>
+
+      <script type="text/javascript">
+      $(document).ready(function(){
+        $('#acordion').accordion({
+        });
+      });
+      </script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.main li a').mouseover(function(){
+            $('audio')[0].play();
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.main li').mouseover(function(){
+            $('audio')[0].play();
+        });
+      });
+    </script>     
+
+</head>
+<body >
+  <audio src="{{STATIC_URL}}tonos/High1.ogg"autoplay>no soporta audio</audio>
+  <header>
+  
+                        <div id="contenido">
+                          
+                    <input id='fecha1' type="text" name="fecha" placeholder="CONSULTE LA FECHA">
+                          <div id="intro"> 
+<br></br>
+<img src="{{STATIC_URL}}images/menudirector.jpg" alt="Example pic" style="border: 3px solid #ccc;" />
+
+<h4><a href="#">IMPORTANTE...!</a></h4>
+<h5>
+Una de las restricciones que se pueden aplicar a las computadoras de la escuela es el tipo de sitios web que los estudiantes y profesores pueden visitar (o, de hecho, si el equipo brinda acceso a Internet a todos). La mayoría de estas reglas son para proteger a los estudiantes de ver material inadecuado, como pornografía y sitios racistas. Pero si un profesor está guiando, por ejemplo, una clase de salud, las reglas que bloquean imágenes del cuerpo humano pueden resultar perjudiciales para el proceso de aprendizaje.
+</h5>
+</div>
+                Bienvenido: {{usuario.username}}
+                        <div id="acordion">
+                        <h3 ><a href="#">ALUMNOS</a></h3>
+                        <DIV>
+                          
+                            <li><h5><a href="/registro/">REGISTRAR</a></h5></li>
+                            <li><h5><a href="/nuevoUsuario/">CREAR USUARIO</a></h5></li>
+                            <li><h5><a href="/archivos/">REGISTRAR DESDE UN ARCHIVO</a></h5></li>
+                            <li><h5><a href="/buscador/">BUSCAR</a></h5></li>
+                           
+                          </DIV> 
+                          <h3 ><a href="#">PROFESORES</a></h3>
+                        
+                          <DIV>
+                          <P>
+                            <li><a href="/personal/">Registrar</a></li>
+                            <li><a href="/listarProfesores/">Ver Profesores</a></li>
+                            <li><a href="/nuevoUsuario/">Crear Usuario</a></li>
+                          </P> 
+                          </DIV>  
+                          <h3 ><a href="#">CURSOS</a></h3>
+                        <DIV>
+                          <P>
+                            <li><a href="/cursos/">Registrar Curso</a>
+                            <li><a href="/listaCursos/">Ver Cursos</a></li>
+                            
+                            <li><a href="/AsignacionCurso/">Asignar Profesores</a></li>
+                          </P> 
+                          </DIV> 
+                          <h3 ><a href="#">MATERIAS</a></h3>
+                        <DIV>
+                          <P>
+                            <li><a href="/materias/">Registrar</a></li>
+                          <li><a href="/listaMaterias/">Ver Materias</a></li>
+                          <li><a href="/asingnarCursos/">Asignar Materias</a></li>
+                          <li><a href="/asingnar/">Asignar Materia A Profesor</a>
+                          </P>  
+
+                        </DIV>
+                      </div>      
+    </div>
+
+   
+    <div id="contenido">
+      <div id="cuerpo">
+        {% block busqueda %}
+        {% endblock %}
+           
+        {% block registro_personal %}
+        {% endblock %}
+
+        {% block registro_materia %}
+        {% endblock %}
+
+        {% block registro_alumno %}
+        {% endblock %}
+
+        {% block registro_curso %}
+        {% endblock %}
+
+        {% block lista_materias %}
+        {% endblock %}
+
+        {% block editar_materias %}
+        {% endblock %}
+
+        {% block buscador %}
+        {% endblock %}
+
+        {% block Asignar_materias %}
+        {% endblock %}
+
+        {% block lista_profesores %}
+        {% endblock %}
+
+        {% block lista_cursos %}
+        {% endblock %}
+
+        {% block editar_profesor %}
+        {% endblock %}
+
+        {% block editar_Curso %}
+        {% endblock %}
+
+        {% block lista_Alumnos %}
+        {% endblock %}
+
+        {% block editar_alumno %}
+        {% endblock %}
+
+        {% block resultadoBusqueda %}
+        {% endblock %}
+
+        {% block Asignar_materiasPro %}
+        {% endblock %}
+
+        {% block Registro_Profesor %}
+        {% endblock %}
+
+        {% block materiasPProfesor %}
+        {% endblock %}
+
+        {% block CurosPProfesor %}
+        {% endblock %}
+
+        {% block alumnoDelCursos %}
+        {% endblock %}
+
+        {% block Usuarios %}
+        {% endblock %}
+
+        {% block Asignar_Cursos %}
+        {% endblock %}
+
+        {% block materiasPCurso %}
+        {% endblock %}
+
+        {% block materiaDesavilitado %}
+        {% endblock %}
+
+        {% block darBaja %}
+        {% endblock %}
+
+        {%block subir %}
+        {% endblock %}
+
+        {% block Curso_Profesor %}
+        {% endblock %}
+
+        {% block BuscarAlumno %}
+        {% endblock %}
+
+        {% block resultadobisquedas %}
+        {% endblock %}
+      </div>
+</body>
+
+</html>

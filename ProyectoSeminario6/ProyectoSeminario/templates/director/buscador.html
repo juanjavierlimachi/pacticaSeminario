@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block BuscarAlumno %}
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
+  	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js"></script>
+  	<link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/uniform.agent.min.css">
+   
+    
+
+<script type='text/javascript'>
+    // On load, style typical form elements
+    $(function () {
+        $(" select, input, button").uniform();
+    });
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function($) {
+		$("#id_buscar").keyup(function(event) {
+			//console.log(event)
+			//texto=this.value;
+			$.ajax({
+				type:'POST',
+				url:'/buscador/',
+				data:$("#buscarForm").serialize(),
+				success:resultado,
+				error:errores
+			});
+		});
+	});
+	function resultado(data){
+		$("#resultados_buscar").html(data);
+	}
+	function errores(){
+		alert("error");
+	}
+</script>
+<div id="buscar">
+	<form action="" method="POST" id="buscarForm">
+		{% csrf_token %}
+		{{formulario}}
+	</form>
+</div>
+	<div id="resultados_buscar">
+
+	</div>
+</div>
+{% endblock %}

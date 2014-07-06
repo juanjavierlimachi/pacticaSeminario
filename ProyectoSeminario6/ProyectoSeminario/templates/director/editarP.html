@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block editar_profesor %}
+	<div>
+		<table border="1" align="center">
+		<form action="" method="POST">{% csrf_token %}
+			<tr><td>{{formulario.as_ul}}</td></tr>
+			<tr><td align="center"><input type="submit" value="Guardar"/>
+			<input type="reset" name="cancelar" value="Cancelar"></td><td><a href="/listarProfesores/">Atras</td></tr>
+		</form>
+	</div>
+{% endblock %}

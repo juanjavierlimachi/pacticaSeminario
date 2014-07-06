@@ -1,0 +1,33 @@
+{% extends "profesor/ingreso.html" %}
+{% block notas %}
+
+<link rel="stylesheet" type="text/css" media="screen" href="/static/css/table.css">
+<div id="bienvenido"><h3>NOMINA DEL CURSO: {{curso.nombre_Curso}}</h3></div>
+<br>
+<div id="notas">
+	<table border="1" align="center">
+		<tr><td style="background:#A4A4A4;color:#D8D8D8">Id:</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Nombre(s)</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">A Paterno</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">A Materno</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Ci:</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Registrar:</td>
+		</tr>
+		{% for a in alumno %}
+		<tr><td>{{a.id}}</td>
+			<td>{{a.Nombre_Alumno}}</td>
+					<td>{{a.Apellido_Paterno}}</td>
+					<td>{{a.Apellido_Materno}}</td>
+					<td>{{a.ci}}</td>
+					<td>Nota Examen:<input type="text" name="numero1" size="2" onKeyUp="fncSumar()"/>
+					<br>Practicas:<input type="text" name="prac" size="2" > 
+				   <!--Trimestre_2:<input type="text" name="numero2" size="2" onKeyUp="fncSumar()"/>
+					Trimestre_3:<input type="text" name="numero3" size="2" onKeyUp="fncSumar()"/>
+					DPS:<input type="text" name="numero4" size="2" onKeyUp="fncSumar()"/>
+					Total:<input type="text" name="resultado" size="1"/></td>-->
+			</tr>
+		{% endfor %}
+		<tr><td align='center'><input type='submit' value='Guardar'></td></tr>
+   </table>
+</div>
+{% endblock %}

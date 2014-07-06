@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" media="screen" href="/static/css/table.css">
+<div id="misMaterias">
+<table border="1" align="center">
+	<td style="background:yellow;color:red">Mis Materias</td>
+ 	 {% for profe in profesores %}
+ 	{% for ap  in a %}
+ 		{% for ma in m %}
+ 		  	{% if profe.id == ap.id_Profesor_id and ap.id_Materia_id == ma.id %}
+ 		  	<tr><td>{{ma.nombre_Materia}}</td>
+ 		  		{% endif %}
+ 		{% endfor %}
+ 	{% endfor %}
+ {% endfor %}
+</table><br>
+
+</table><br>
+
+</div>

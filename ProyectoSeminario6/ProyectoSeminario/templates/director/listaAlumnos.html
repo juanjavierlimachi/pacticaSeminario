@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block lista_Alumnos %}
+<div id="nomiAlum">
+<h2 align="center">Nomina De Alumnos</h2>
+<table border="1" align="center">
+	<td style="background:yellow;color:red">Nombre(s)</td>
+	<td style="background:yellow;color:red">Apellido Paterno</td>
+	<td style="background:yellow;color:red">Apellido Materno</td>
+	<td style="background:yellow;color:red">Fecha de Nacimiento</td>
+	<td style="background:yellow;color:red">Nombre Tutor</td>
+	<td style="background:yellow;color:red">CI:</td>
+	<td style="background:yellow;color:red">Direccion</td>
+	<td style="background:yellow;color:red">Telefono</td>
+	<td style="background:yellow;color:red">Curso</td>
+	<td style="background:yellow;color:red">Registrardo en Fecha</td>
+	{% for alumno in alumno %}
+	<tr><td>{{alumno.Nombre_Alumno}}</td>
+		<td>{{alumno.Apellido_Paterno}}</td>
+		<td>{{alumno.Apellido_Materno}}</td>
+		<td>{{alumno.fecha_nacimiento}}</td>
+		<td>{{alumno.Padre_o_Tutor}}</td>
+		<td>{{alumno.ci}}</td>
+		<td>{{alumno.direccion}}</td>
+		<td>{{alumno.telefono}}</td>
+		<td>{{alumno.idCurso}}</td>
+		<td>{{alumno.fecha_registro}}</td>
+		<td><a href="/editarA/{{alumno.id}}/">Editar</a><td>
+		<td><a href="/borrarA/{{alumno.id}}/">Eliminar</a></td>
+	</tr>
+	{% endfor %}
+	</table>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "profesor/ingreso.html" %}
+{% block asistencia %}
+
+	<!--<link rel="stylesheet" type="text/css" media="screen" href="/static/css/todoProfe.css">-->
+<div id="asistencia">
+	<table border="1" align="center" class="tabla">
+		<tr><td style="background:#6E6E6E;color:#BDBDBD">Id: </td>
+			<td style="background:#6E6E6E;color:#BDBDBD">Nombre(s)</td>
+			<td style="background:#6E6E6E;color:#BDBDBD">A Paterno</td>
+			<td style="background:#6E6E6E;color:#BDBDBD">A Materno</td>
+			<td style="background:#6E6E6E;color:#BDBDBD">Ci:</td>
+			<td style="background:#6E6E6E;color:#BDBDBD">Asistencia:</td>
+		</tr>
+		<form action='/RegAsistencias/'  enctype='multipart/form-data' >{% csrf_token %}
+		{% for a in alumno %}
+		<tr><td>{{a.id}}</td>
+					<td>{{a.Nombre_Alumno}}</td>
+					<td>{{a.Apellido_Paterno}}</td>
+					<td>{{a.Apellido_Materno}}</td>
+					<td>{{a.ci}}</td>
+				    <td><select><option>....</option>
+				    	<option>si</option>
+				    	<option>no</option>
+				    	<option>Permiso</option>
+				    </select></td>
+				<!--<td>Si:<input type="radio" value="1"/>No:<input type="radio" value"0"/></td> 
+				<td><input type="submit" name="enviar" value="enviar"></td>     {{formulario.as_p}}-->
+					
+
+			</tr>
+		{% endfor %}
+				<tr><td><input type="submit" name="enviar" value="enviar"></td><td><input type="reset" value="Linpiar"></td></tr>
+		</form>
+   </table>
+   
+</div><br>
+
+
+{% endblock %}
+
+

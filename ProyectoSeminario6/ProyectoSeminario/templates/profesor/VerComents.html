@@ -1,0 +1,25 @@
+{% extends "profesor/ingreso.html" %}
+{% block vercomentarioa %}
+	<div>
+		<table border='1' align='center'>
+		<tr>
+			<td style="background:#A4A4A4;color:#D8D8D8">Descripcion</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Archivo</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Fecha de Publicacion</td>
+		</tr>
+
+		{% for c in comentario %}
+			{% for cur in curso %}
+				{% if c.id_curso_id == cur.id %}
+				<tr><td>{{c.descripcion}}</td>
+					<td>{{c.archivo}}</td>
+					<td>{{c.fecha}}</td>
+					<td><a href="/EditarComentario/{{c.id}}/">Editar</a></td>
+					<td><a href="/eliminarComentario/{{c.id}}/">Eliminar</a></td>
+				</tr>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+		</table>
+	</div> 
+	{%endblock%}

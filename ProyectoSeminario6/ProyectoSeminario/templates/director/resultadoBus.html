@@ -1,0 +1,29 @@
+<br>
+<div>
+	<ul>
+		<table border='2'>
+			<tr><td align='center' style="background:#848484;color:#D8D8D8">Nombre</td>
+				<td align='center' style="background:#848484;color:#D8D8D8">A Paterno</td>
+				<td align='center' style="background:#848484;color:#D8D8D8">A Materno</td>
+				<td align='center' style="background:#848484;color:#D8D8D8">Tutor</td>
+				<td align='center' style="background:#848484;color:#D8D8D8">ci</td>
+				<td align='center' style="background:#848484;color:#D8D8D8">Direccion</td>
+				<td align='center' style="background:#848484;color:#D8D8D8">Telefono</td>
+				<td align='center' style="background:#848484;color:#D8D8D8">Fecha de Registro</td>
+				<td align='center' style="background:#848484;color:#D8D8D8">Curso</td>
+			</tr>
+	{% for item in lista %}
+		<tr><td>{{item.Nombre_Alumno}}:</td>
+		 <td>{{item.Apellido_Paterno}} </td>
+		<td>{{item.Apellido_Materno}}</td>
+		  <td>{{item.Padre_o_Tutor}} </td>
+			<td>{{item.ci}} </td>
+			 <td>{{item.direccion}} </td>
+			  <td>{{item.telefono}} </td>
+			  <td>{{item.fecha_registro}} </td>
+			   <td>{{item.idCurso}}</td>
+		</td></tr>
+	{% endfor %}
+	</table>
+	</ul>
+</div>

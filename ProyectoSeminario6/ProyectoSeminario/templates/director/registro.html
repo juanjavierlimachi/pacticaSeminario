@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block registro_alumno %}
+
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
+  	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js"></script>
+  	<link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/uniform.agent.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/jquery-ui-1.10.4.custom.css">
+<script type='text/javascript'>
+    $(function () {
+        $(" select, input, button").uniform();
+    });
+</script>
+
+<div id="regAlum">
+	<h3 align="center">REGISTRO DE ALUMNOS NUEVOS</h3>
+		<form id='formulario' method='POST' enctype='multipart/form-data' action=''>
+			{% csrf_token %}
+			<fieldset id="formulario">
+			{{ formulario.as_p }}
+			<p>
+                    <label>Fecha de nacimiento:</label>
+                    <select name="sdia">
+                        <option value="0">Dia</option>
+                        {% for dia in listadia %}
+                            <option value="{{dia}}">{{dia}}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="smes">
+                        <option value="0">Mes</option>
+                        {% for mes in listames %}
+                            <option value="{{mes}}">{{mes}}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="sanio">
+                        <option value="0">Año</option>
+                        {% for anio in listaanio %}
+                            <option value="{{anio}}">{{anio}}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+			<li><input type='submit' name="btn" value='confirmar'>
+			<input type="reset" name="btn" value="Cancelar">
+			<a href="/archivos/">Registrar Desde un Archivo</a>
+		</fieldset>
+		</form>
+			{% if estado %}
+		<h1>guardado Exitoso</h1>
+		{% endif %}
+</div>
+{% endblock %}

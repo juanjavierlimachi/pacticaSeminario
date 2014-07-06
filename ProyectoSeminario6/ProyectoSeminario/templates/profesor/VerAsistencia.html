@@ -1,0 +1,29 @@
+{% extends "profesor/ingreso.html" %}
+{% block verasistencia %}
+
+<link rel="stylesheet" type="text/css" media="screen" href="/static/css/table.css">
+<div id="bienvenido"><h3>NOMINA DEL CURSO: {{curso.nombre_Curso}}</h3></div>	
+<div id="verAsistencia">
+	<table border="1" align="center">
+		<tr><td style="background:#A4A4A4;color:#D8D8D8">Id</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Nombre(s)</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">A Paterno</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Ci:</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Asistencias</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Fecha De Asistencia</td>
+		</tr>
+		{% for a in alumno %}
+			{% for asist in asistencia %}
+				{% if a.id == asist.id_Alumno_id %}
+				<tr><td>{{a.id}}</td>
+					<td>{{a.Nombre_Alumno}}</td>
+					<td>{{a.Apellido_Paterno}}</td>
+					<td>{{a.ci}}</td>
+					<td>{{asist.asistencias}}</td>
+					<td>{{asist.fecha}}</td></tr>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	</table>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block lista_profesores %}
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
+  	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js"></script>
+  	<link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/uniform.agent.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/jquery-ui-1.10.4.custom.css">
+    
+
+<script type='text/javascript'>
+    // On load, style typical form elements
+    $(function () {
+        $("table, select, input, button").uniform();
+    });
+</script>
+
+<div id="listProfes">
+<h3 align="center">DOCENTES ACTUALES EN EL ESTABLECIMIENTO</h3>
+<table border="1" align="center">
+	<td style="background:#848484;color:#D8D8D8">ID</td>
+	<td style="background:#848484;color:#D8D8D8">Nombre(s)</td>
+	<td style="background:#848484;color:#D8D8D8">Apellido Paterno</td>
+	<td style="background:#848484;color:#D8D8D8">Apellido Materno</td>
+	<td style="background:#848484;color:#D8D8D8">Fecha de Nacimiento</td>
+	<td style="background:#848484;color:#D8D8D8">CI:</td>
+	<td style="background:#848484;color:#D8D8D8">Direccion</td>
+	<td style="background:#848484;color:#D8D8D8">Telefono</td>
+	<td style="background:#848484;color:#D8D8D8">Registrado en Fecha:</td>
+	{% for profesor in profesores %}
+	<tr>
+		<td>{{profesor.id}}</td>
+		<td>{{profesor.nombre_Profesor}}</td>
+		<td>{{profesor.Apellido_Paterno}}</td>
+		<td>{{profesor.Apellido_Materno}}</td>
+		<td>{{profesor.fecha_nacimiento}}</td>
+		<td>{{profesor.ci}}</td>
+		<td>{{profesor.direccion}}</td>
+		<td>{{profesor.telefono}}</td>
+		<td>{{profesor.fecha_registro}}</td>
+		<td><a href="/editarP/{{profesor.id}}/"><input id="editarProfe" type="submit" name="bregistro" value="editar"></a><td>
+		<td><a href="/borrarP/{{profesor.id}}/"><input type="submit" name="bregistro" value="eliminar"></a></td>
+		<td><a href="/MateriaPProfesor/{{profesor.id}}/"><input type="submit" name="bregistro" value="materias asig."></a></td>
+		<td><a href="/cursoPProfesor/{{profesor.id}}/"><input type="submit" name="bregistro" value="cursos asig."></a></td>
+	</tr>
+	{% endfor %}
+	</table>
+</div>
+{% endblock %}

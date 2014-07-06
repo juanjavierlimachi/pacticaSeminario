@@ -1,0 +1,40 @@
+{% extends "profesor/ingreso.html" %}
+{% block vernotas %}
+
+<link rel="stylesheet" type="text/css" media="screen" href="/static/css/table.css">
+	<div id="bienvenido"><h3>NOMINA DEL CURSO: {{curso.nombre_Curso}}</h3></div>
+	<br>
+<div id="notas2">
+	<table border ="1" align="center">
+		<tr>
+			<td style="background:#A4A4A4;color:#D8D8D8">Nombre(s)</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">A Paterno</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Ci:</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Nombre Materia</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Bimestre 1</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Bimestre 2</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Bimestre 3</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Bimestre 4</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Nota</td>
+		</tr>
+		{% for a in alumno %}
+			{% for m in materia %}
+				{% for n in nota %}
+				{% if a.id == n.id_Alumno_id and n.id_Materia_id == m.id %}
+				<tr><td>{{a.Nombre_Alumno}}</td>
+					<td>{{a.Apellido_Paterno}}</td>
+					<td>{{a.ci}}</td>
+					<td>{{m.nombre_Materia}}</td>
+					<td>{{n.Bimentre_1}}</td>
+					<td>{{n.Bimentre_2}}</td>
+					<td>{{n.Bimentre_3}}</td>
+					<td>{{n.Bimentre_4}}</td>
+					<td>{{n.nota}}</td>
+					<td><a href="/editarNota/{{n.id}}/">Editar</a></td></tr>
+				 {% endif %}
+				{% endfor %}
+ 			{% endfor %}
+ 		{% endfor %}
+	</table>
+</div>
+{% endblock %}

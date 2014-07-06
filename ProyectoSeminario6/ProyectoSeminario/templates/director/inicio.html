@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inicio</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/estylo.css">
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/jquery-ui-1.10.4.custom.css">
+    <!--jquery.css estoy llamando de otro lado por si acaso-->
+    <script type="application/javascript" src="{{STATIC_URL}}js/script.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/form.css">
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.menu li a').mouseover(function(){
+            $('audio')[0].play();
+        });
+      });
+      </script>
+      
+
+
+      <script type="text/javascript">
+      $(document).ready(function(){
+        $('#botonAdmin').mouseover(function(){
+          $('#ayuda1').show(1000,function(){});
+          $('#ayuda2').hide(1000,function(){});
+          $('#ayuda3').hide(1200,function(){});
+          $('#ayuda4').hide(1400,function(){});
+          $('#ayuda5').hide(1500,function(){});
+            $('#ayuda1').animate({
+              width:'500px',
+            });
+        });
+      });
+      </script>
+      </script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+        $('#botonSecretaria').mouseover(function(){
+          $('#ayuda1').hide(1000,function(){});
+          $('#ayuda2').show(1000,function(){});
+          $('#ayuda3').hide(1200,function(){});
+          $('#ayuda4').hide(1400,function(){});
+          $('#ayuda5').hide(1500,function(){});
+            $('#ayuda2').animate({
+              width:'500px',
+            });
+        });
+      });
+      </script>
+      </script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+        $('#botonDirector').mouseover(function(){
+          $('#ayuda1').hide(1000,function(){});
+          $('#ayuda2').hide(1000,function(){});
+          $('#ayuda3').show(1200,function(){});
+          $('#ayuda4').hide(1400,function(){});
+          $('#ayuda5').hide(1500,function(){});
+            $('#ayuda3').animate({
+              width:'500px',
+            });
+        });
+      });
+      </script>
+      </script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+        $('#botonAlumno').mouseover(function(){
+          $('#ayuda1').hide(1000,function(){});
+          $('#ayuda2').hide(1000,function(){});
+          $('#ayuda3').hide(1200,function(){});
+          $('#ayuda4').show(1400,function(){});
+          $('#ayuda5').hide(1500,function(){});
+            $('#ayuda4').animate({
+              width:'500px',
+            });
+        });
+      });
+      </script>
+      </script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+        $('#botonProfesor').mouseover(function(){
+          $('#ayuda1').hide(1000,function(){});
+          $('#ayuda2').hide(1200,function(){});
+          $('#ayuda3').hide(1400,function(){});
+          $('#ayuda4').hide(1600,function(){});
+          $('#ayuda5').show(1800,function(){});
+            $('#ayuda5').animate({
+              width:'500px',
+
+            });
+        });
+      });
+      </script>
+
+      <!--<script type="text/javascript">
+      $(document).ready(function(){
+        $('#fechas').datepicker({
+          changeMonth: true,
+          changeYear: true
+        });
+      });
+      </script>-->
+</head>
+<body>
+
+<audio src="{{STATIC_URL}}tonos/Click1.ogg">no soporta audio</audio>
+  	<div class="main">
+      <div class="navegador">
+      	<div>
+          <nav>
+             <ul class="menu">
+                  <li id="botonSalir"><a href="/cerrar/"></a></li>
+                  <li id="botonProfesor"><a href="/validar/">PROFESOR</a></li>
+                  <li id="botonAlumno"><a href="/alumnos/">ALUMNO</a></li>
+                  <li id="botonDirector"><a href="/ingresar/">DIRECTOR</a></li>
+                  <li id="botonSecretaria"><a href="/validardatos/">SECRETARI@</a></li>
+                  <li id="botonAdmin"><a href="/admin/">ADMIN</a></li>
+               <!--   <li><a href="/registro/">Registrar Alumnos</a></li>
+                  <li><a href="/personal/">Registrar Personal</a></li>
+                  <li><a href="/materias/">Registrar Materias</a></li>
+                  <li><a href="/cursos/">Registrar Cursos</a></li>
+                  <li><a href="/asingnar/">Asignar Materias a Profesores</a></li>
+                  <li><a href="/asingnarCursos/">Asignar Materias a Cursos</a></li>
+                  <li><a href="/listarProfesores/">Ver Personal</a></li>
+                  <li><a href="/listaMaterias/">Ver Materias</a></li>
+                  <li><a href="/listaCursos/">Ver Cursos</a></li>
+                  <li><a href="">Usuarios</a></li>-->
+                   
+              </ul>    
+          </nav>
+         </div> 
+      </div>
+    </div> 
+<div id="ayudas">
+  <div id="ayuda1"><h6>Ingreso restringido solo Admin</h6></div>
+  <div id="ayuda2"><h6>Puede gestionar al estamento</h6></div>
+  <div id="ayuda3"><h6>Permisos privilegiados para su uso</h6></div>
+  <div id="ayuda4"><h6>Puede ver su informacion educativa</h6></div>
+  <div id="ayuda5"><h6>Registre informacion del estudiante</h6></div>
+</div>
+
+<!--<div class="derecha"> 
+<br /><br />
+<img src="{{STATIC_URL}}images/casona.jpg" alt="Example pic" style="border: 3px solid #ccc;" />
+
+<h2><a href="#">¿DE QUE FORMA TE AYUDA ESTA PÁGINA?</a></h2>
+Esta pagína esta centrada para usted como padre de familia, tiene un funcionamiento muy amigable con la cual usted podra visualizar todas las actividades de su hijo dentro de su formacion en el establecimiento y de esta manera usted podra hacer un seguimiento muy profundo en cuanto a sus deberes y avances de su hijo como estudiante.
+</div>-->
+    <!--<div id="contenido">
+      <p>Bienvenido :{{username}}</p>
+      <p>Usuario :{{usuario.username|upper}}</p>-->
+      <div id="cuerpo">
+            <div class="derecha"> 
+<br /><br />
+<img src="{{STATIC_URL}}images/casona.jpg" alt="Example pic" style="border: 3px solid #ccc;" />
+
+<h2><a href="#">¿DE QUE FORMA TE AYUDA ESTA PÁGINA?</a></h2>
+Esta pagína esta centrada para usted como padre de familia, tiene un funcionamiento muy amigable con la cual usted podra visualizar todas las actividades de su hijo dentro de su formacion en el establecimiento y de esta manera usted podra hacer un seguimiento muy profundo en cuanto a sus deberes y avances de su hijo como estudiante.
+</div>
+           {% block profesoresindex %}
+           {% endblock %}
+           {% block autentificar %}
+           {% endblock %}
+           {% block autenticacionProfesor %}
+           {% endblock %}
+           {% block incorrectos %}
+           {% endblock %}
+
+           {% block ingresar %}
+           {% endblock%}
+
+           {% block error %}
+           {% endblock %}
+           {% block ingAlum %}
+           {% endblock %}
+
+
+      
+    </div>
+  
+</body>
+</html>

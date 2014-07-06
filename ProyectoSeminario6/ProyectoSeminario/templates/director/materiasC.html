@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block materiasPCurso %}
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
+  	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js"></script>
+  	<link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/uniform.agent.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/jquery-ui-1.10.4.custom.css">
+    
+
+<script type='text/javascript'>
+    // On load, style typical form elements
+    $(function () {
+        $(" select, input, button").uniform();
+    });
+</script>
+<div id="mateCurso">
+<h2 align="center"></h2>
+<table border="1" align="center">
+	<tr><td>Materias de Curso {{nombre_Curso}}</td></tr>
+	{% for materias in materia %}
+		{% for cursos in curso %}
+			{% for m in mat %}
+				{% if m.id == materias.id_Materia_id and materias.id_Curso_id == cursos.id %}
+
+					<tr><td>{{m.nombre_Materia}}</td>
+						<td><a href="/dessavilitado/{{materias.id}}/"><input type="submit" name="bregistro" value="deshabilitar materia"</a></td>
+					</tr>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	{% endfor %}
+
+<!--	{% for materias in Amaterias %}
+		
+		<tr><td>{{materias.id_Materia_id}}</td></tr>
+		{{materias.id_Profesor_id}}
+	{% endfor %}-->
+	<tr><td><td><a href="/listaCursos/"><input type="submit" name="bregistro" value="atras"</a></td></td></td></tr>
+	</table>
+</div>
+{% endblock %}

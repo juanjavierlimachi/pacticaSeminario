@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block CurosPProfesor %}
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
+  	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js"></script>
+  	<link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/uniform.agent.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/jquery-ui-1.10.4.custom.css">
+    
+
+<script type='text/javascript'>
+    // On load, style typical form elements
+    $(function () {
+        $("table, select, input, button").uniform();
+    });
+</script>
+
+<div id="cursosAsig">
+<table border="1" align="center">
+	<tr><td style="background:#848484;color:#D8D8D8">CURSOS ASIGNADOS</td></tr>
+ {% for cursoP in cursosPro %}
+	 {% for profe in profesor %}
+		 {% for curso in cursos %}
+		 	{% if  profe.id == cursoP.id_Profesor_id and cursoP.id_Curso_id == curso.id %}
+		 	  <tr>
+		 	  	<td>{{curso.nombre_Curso}}</td>
+		 	  	<td><a href="/DesCursoPro/{{curso.id}}/"><input type="submit" name="bregistro" value="deshabilitar curso"></a></td></tr>
+		 	{% endif %}
+		 {% endfor %}
+	 {% endfor %}
+ {% endfor %}
+</table>
+</div>
+{% endblock %}

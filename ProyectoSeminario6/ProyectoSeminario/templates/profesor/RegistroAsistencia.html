@@ -1,0 +1,15 @@
+{% extends "profesor/ingreso.html" %}
+{% block registroAsistencia %}
+<div>
+	
+		<form method='POST' enctype='multipart/form-data' action=''>
+			{% csrf_token %}
+			<tr><td>{{ formulario.as_p }}</td></tr>
+			<tr><td align="center"><input type='submit' value='confirmar'>
+				<input type="reset" name="cancelar" value="Cancelar">
+				</td>
+			</tr>
+		</form>
+	
+</div>
+{%endblock%}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block alumnoDelCursos %}
+<div id="verAlumnos">
+	
+	<table border="1" align="center">
+		<tr><td style="background:#848484;color:#D8D8D8">Nombre(s)</td>
+			<td style="background:#848484;color:#D8D8D8">Apellido Paterno</td>
+			<td style="background:#848484;color:#D8D8D8">Apellido Materno</td>
+			<td style="background:#848484;color:#D8D8D8">Fecha de Nacimiento</td>
+			<td style="background:#848484;color:#D8D8D8">Tutor</td>
+			<td style="background:#848484;color:#D8D8D8">Ci:</td>
+			<td style="background:#848484;color:#D8D8D8">Direccion</td>
+			<td style="background:#848484;color:#D8D8D8">Telefono</td>
+			<td style="background:#848484;color:#D8D8D8">Curso</td>
+		</tr>
+
+		{% for alumno in alumnos %}
+		     {% for c in curso %}
+		      	{% if alumno.idCurso_id == c.id %}
+								<tr>
+									<td>{{alumno.Nombre_Alumno}}</td>
+								<td>{{alumno.Apellido_Paterno}}</td>
+								<td>{{alumno.Apellido_Materno}}</td>
+								<td>{{alumno.fecha_nacimiento}}</td>
+								<td>{{alumno.Padre_o_Tutor}}</td>
+								<td>{{alumno.ci}}</td>
+								<td>{{alumno.direccion}}</td>
+								<td>{{alumno.telefono}}</td>
+								<td>{{alumno.idCurso}}</td>
+								</tr>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	</table>
+
+
+</div>
+{% endblock %}

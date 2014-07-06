@@ -1,0 +1,207 @@
+
+
+<!--<table border="1" align="center">
+{% for cp in cursosP %}
+    {% for a in asig %}
+        {% for profe in clave %}
+				{% for materia in materias %}
+					{% for curso in cursos %}
+						{% if profe.id == a.id_Profesor_id and a.id_Materia_id == materia.id  %}
+
+							  {% if profe.id == cp.id_Profesor_id and cp.id_Curso_id == curso.id %}
+							  <tr><td>{{materia.nombre_Materia}}</td>
+								<td>{{curso.nombre_Curso}}</td></tr>
+								
+								{% endif %}
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+		{% endfor %}
+	{% endfor %}
+{% endfor %}
+</table> -->   
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" media="screen" href="/static/css/todoProf.css">
+
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery.idealforms.min.js"></script>
+  	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.idealforms.min.css"></script>
+  	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/uniform.aristo.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/jquery-ui-1.10.4.custom.css">
+
+	<!--<script src="/static/js/jquery-2.1.0.min.js" languaje="javascript"></script>-->
+<script type="text/javascript">
+      $(document).ready(function(){
+        $('#acordionProfe').accordion({
+        });
+      });
+      </script>
+
+ <script type="text/javascript">
+      $(document).ready(function(){
+        $('#fecha2').datepicker({
+          changeMonth: true,
+          changeYear: true
+        });
+      });
+      </script>
+
+ <script type='text/javascript'>
+    // On load, style typical form elements
+    $(function () {
+        $(" select, input, button").uniform();
+    });
+</script>
+
+
+
+<!--<script type="text/javascript">
+$(document).ready(function(){
+
+	$("#ocultar").click(function(event){
+	  event.preventDefault();
+	  $("#capaefectos").hide("slow");
+	});
+
+ 
+	$("#mostrar").click(function(event){
+	  event.preventDefault();
+	  $("#capaefectos").show(3000);
+	});
+});
+</script>-->
+
+</head>
+<body>
+	
+	
+	<div align="center"  style="background-color:#cc7700; color:fff; pading:0px; margin:0px"><a>
+		<MARQUEE onmouseover=this.stop() onmouseout=this.start()  trueSpeed scrollAmount=1 scrollDelay=35 width=850 align="left"><A>
+		 <FONT face=Arial color=#660000 size=1>
+              <STRONG><h2>BIENVENIDO AL SISTEMA DE INFORMACION ACADEMICA PARA ESTUDIANTES</h2></STRONG></FONT>
+			</A></MARQUEE
+			></a>
+		</div><br>
+
+
+	<div id="palaPublicar"><a href="/Comentarios/">PUBLICAR</a></div>
+	
+	<div id="importante">
+		<br></br><img src="{{STATIC_URL}}images/images.jpg" alt="Example pic" style="border: 3px solid #ccc;" />
+<div id="fecha2"><input type="text" placeholder="CONSULTE LA FECHA"></div>
+<h5><a href="#">IMPORTANTE.!</a></h5>
+<h5>Las computadoras pueden ser herramientas muy útiles en el aula actual, pero no están exentas de restricciones y limitaciones. Debido a que están siendo utilizadas con fines didácticos y no por razones personales, los oficiales escolares pueden establecer numerosas normas relativas a la conducta con el ordenador. Sin embargo, aún es mejor tener computadoras en las escuelas que no tenerlas, ya que los estudiantes que no aprenden a utilizarlas a una edad temprana tendrán una clara desventaja cuando entren al mundo laboral.</h5>
+</div>
+
+	
+	
+	<div id="bienvenido"><h3>Bienvenido Prof. : {{u.nombre_Profesor}}</h3></div>
+	
+<div id="acordionProfe">
+	<h3><a href="#">Guia</a></h3>
+		<div>
+			<h6><strong>BIENVENIDO PROFESOR:</strong> Aqui usted podra seleccionar el curso que decea gestionar haciendo click en la misma, en la cual uste podra seleccionar las siguientes opciones<li>Registrar hacistencia</li><li>Registrar Notas</li><li>Ver Notas</li><li>Ver Asistencia</li><li>Ver Comentarios</li><a href="http://localhost:9595/validar/">seleccionar curso</a></h6>
+		</div>
+{% for cp in cursosP %}
+	{% for profe in clave %}
+		{% for curso in cursos %}
+			{% if profe.id == cp.id_Profesor_id and cp.id_Curso_id == curso.id %}
+			
+			<h3><a href="#">{{curso.nombre_Curso}}</a></h3>
+				<div>
+					<li><h5><a href="/alumnosDel/{{curso.id}}/">REGISTRAR ASISTENCIA</a></h5></li>
+					<li><a href="/notas/{{curso.id}}/">Registrar Notas</a></li>
+					<li><a href="/reportes/{{curso.id}}/"><input type="submit" name="bregistro" value="imprimir"></a></li>
+
+					<li><a href="/notasC/{{curso.id}}/">Ver Notas</a></li>
+					<li><a href="/VerAsistencia/{{curso.id}}/">Ver Asistencias</a></td></li>
+					<li><a href="/VerComents/{{curso.id}}/">Ver Comentarios</a></li>
+
+					<li><a href="/RegistroAsistencia/">reg Asistencia</a></li>
+					<li><a href="/RegistratNotas/">reg Notas</a></li>
+				</div>
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
+{% endfor %}
+</div>
+
+
+
+<!--<div id="acordionComentar">
+
+<h3><a href="#" id="ocultar">Ocultar Mis Materias</a></h3>
+	<div>
+		<li>esto la verdad no se para q sera</li>
+	</div>	
+<h3><a href="#" id="mostrar">Ver Mis materias</a></h3>
+	<div>
+		<li>esto tambien no se para q sera</li>
+	</div>
+</div>
+
+<!--<div id='capaefectos'>
+<table border="1" align="center">
+	<td style="background:yellow;color:red">Mis Materias</td>
+ {% for profe in clave %}
+ 	{% for a  in asig %}
+ 		{% for materia in materias %}
+ 		  	{% if profe.id == a.id_Profesor_id and a.id_Materia_id == materia.id %}
+ 		  	<tr><td>{{materia.nombre_Materia}}</td>
+ 		  		{% endif %}
+ 		{% endfor %}
+ 	{% endfor %}
+ {% endfor %}
+</table>
+</div>-->
+<!-- Estes es un menu talves vamos ha nesesitar
+<div class='menu'>
+	<ul>
+		<li><a href="">Noticas</a></li>
+		<li><a href="">Comiciones</a></li>
+		<li><a href="">Imagenes</a></li>
+		<li><a href="">Presidentes De Curso</a></li>
+	</ul>
+	
+</div>-->
+<div id="header">
+{% block comentario %}
+{% endblock %}
+</div>
+
+<div id="contenedor">
+{% block asistencia %}
+{% endblock %}
+{% block notas %}
+{% endblock %}
+{% block vernotas %}
+{% endblock %}
+{% block editarnotas %}
+{% endblock %}
+{% block verasistencia %}
+{% endblock %}
+{% block vercomentarioa %}
+{% endblock %}
+{% block editarcomentario %}
+{% endblock %}
+{% block datosguardados %}
+{% endblock %}
+
+
+
+
+{% block registroAsistencia %}
+{% endblock %}
+{% block registroNotas %}
+{% endblock %}
+</div>
+
+
+</body>
+</html>
+

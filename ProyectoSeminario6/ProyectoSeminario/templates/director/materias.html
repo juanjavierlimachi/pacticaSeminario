@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block lista_materias %}
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
+  	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js"></script>
+  	<link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/uniform.agent.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}js/jquery-ui-1.10.4.custom.css">
+    
+
+<script type='text/javascript'>
+    // On load, style typical form elements
+    $(function () {
+        $(" select, input, button").uniform();
+    });
+</script>
+<div id="listMateria">
+<h3 align="center">MATERIAS ACTULAES</h3>
+<table border="1" align="center">
+	<tr><td>Nomina de Materias</td></tr>
+	{% for materia in materias %}
+	<tr>
+	<td>{{materia.nombre_Materia}}</td>
+		<td><a href="/editar/{{materia.id}}/"><input type="submit" name="bregistro" value="editar"></a><td>
+		<td><a href="/borrar/{{materia.id}}/"><input type="submit" name="bregistro" value="eliminar"></a></td>
+	</tr>
+	{% endfor %}
+	</table>
+</div>
+{% endblock %}

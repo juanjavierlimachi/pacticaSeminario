@@ -1,0 +1,24 @@
+<link rel="stylesheet" type="text/css" media="screen" href="/static/css/table.css">
+<div>
+<table border="1" align="center">
+	<tr>
+			<td style="background:green;color:yellow">Nombre(s)</td>
+			<td style="background:green;color:yellow">A. Paterno</td>
+			<td style="background:green;color:yellow">A. Materno</td>
+			<td style="background:green;color:yellow">Ci:</td>
+		</tr>
+	{% for a in alum %}
+		{% for c in curso %}
+			{% if c.id == a.idCurso_id %}
+				<tr>
+					<td>{{a.Nombre_Alumno}}</td>
+					<td>{{a.Apellido_Paterno}}</td>
+					<td>{{a.Apellido_Materno}}</td>
+					<td>{{a.ci}}</td>
+				</tr>
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
+
+</table>
+</div>
