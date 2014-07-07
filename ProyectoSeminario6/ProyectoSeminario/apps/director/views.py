@@ -107,7 +107,7 @@ def eliminarP(request,id):
 	pro.delete()
 	return HttpResponseRedirect('/listarProfesores/')
 
-def eliminarAlumno(request,id):#este metodo esta incompleto
+def eliminarAlumno(request,id):
 	eli=Alumno.objects.get(id=id)
 	eli.delete()
 	return HttpResponseRedirect('/exito/')
@@ -129,27 +129,11 @@ def RegistrarAlumno(request):
 	if request.method=='POST':
 		formulario=AlumnoForm(request.POST)
 		if formulario.is_valid():
-			alumno=Alumno()
-			alumno.Nombre_Alumno=request.POST['Nombre']
-			alumno.Apellido_Paterno=request.POST['Apellido_Paterno']
-			alumno.Apellido_Materno=request.POST['Apellido_Materno']
-			alumno.Padre_o_Tutor=request.POST['Padre_o_Tutor']
-			alumno.ci=request.POST['ci']
-			alumno.direccion=request.POST['direccion']
-			alumno.telefono=request.POST['telefono']
-			anio=request.POST['sanio']
-			mes=request.POST['smes']
-			dia=request.POST['sdia']
-			alumno.fecha_nacimiento=anio+"-"+mes+"-"+dia
-			alumno.idCurso_id=request.POST['idCurso']
-			alumno.save()
+			formulario.save()
 			return HttpResponseRedirect('/exito/')
 	else:
 		formulario=AlumnoForm()
-	listadia=range(1,32)
-	listames=range(1,13)
-	listaanio=range(2014,1950,-1)
-	return render_to_response('director/registro.html',{'formulario':formulario,'listadia':listadia,'listames':listames,'listaanio':listaanio}, context_instance=RequestContext(request))
+	return render_to_response('director/registro.html',{'formulario':formulario}, context_instance=RequestContext(request))
 def RegistroProfesor(request):
 	if request.method=='POST':
 		formulario=ProfesorForm(request.POST)

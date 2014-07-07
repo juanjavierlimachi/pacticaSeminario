@@ -85,7 +85,7 @@ def RegisComentarios(request):
 			return HttpResponseRedirect('/guardado/')
 	else:
 		formulario=RegistrosForm()
-		return ender_to_response('profesor/asistencia.html',{'formulario':formulario}, context_instance=RequestContext(request))"""
+	return ender_to_response('profesor/asistencia.html',{'formulario':formulario}, context_instance=RequestContext(request))"""
 def VerNotas(request,id):
 	alumno=Alumno.objects.filter(idCurso_id=id)
 	curso=Curso.objects.get(id=id)

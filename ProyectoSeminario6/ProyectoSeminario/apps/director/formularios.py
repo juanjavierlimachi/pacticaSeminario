@@ -5,9 +5,9 @@ from django import forms
 from .models import Alumno, Materia ,Profesor,Curso,Asignar_Materia,Materia_Curso,AsignarCurso_Profesor
 from django.contrib.auth.models import User
 
-#from django.forms.extras.widgets import SelectDateWidget
-#lista_anios = range(2013,1905,-1)
-class AlumnoForm(ModelForm):
+from django.forms.extras.widgets import SelectDateWidget
+class AlumnoForm(forms.ModelForm):
+	fecha_nacimiento = forms.DateField(widget=SelectDateWidget(required=False,years=range(1950,2015)),label="fecha nacimiento")
 	class Meta():
 		model=Alumno
 
@@ -28,7 +28,7 @@ class ProfesorForm(forms.Form):
 	ci=forms.IntegerField()
 	direccion=forms.CharField(max_length=50)
 	telefono=forms.IntegerField()
-		#exclude=['usuario'] nombre = forms.CharField(max_length=80)
+	#exclude=['usuario']
 
 class CursoForm(ModelForm):
 	class Meta():

@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 
 class Curso(models.Model):
 	nombre_Curso=models.CharField(max_length=30)
-
 	def __unicode__(self):
 		return self.nombre_Curso
 
@@ -22,9 +21,11 @@ class Alumno(models.Model):
 	telefono=models.IntegerField(max_length=8)
 	fecha_registro = models.DateTimeField(auto_now=True)
 	idCurso=models.ForeignKey(Curso)
-
+	class Meta():
+		ordering = ['Nombre_Alumno']
 	def __unicode__(self):
 		return self.Nombre_Alumno
+
 class Materia(models.Model):
 	nombre_Materia=models.CharField(max_length=30)
 	def __unicode__(self):
@@ -45,7 +46,8 @@ class Profesor(models.Model):
 	telefono=models.IntegerField()
 	fecha_nacimiento=models.DateField()
 	fecha_registro = models.DateTimeField(auto_now=True)
-
+	class Meta():
+		ordering = ['nombre_Profesor']
 	def __unicode__(self):
 		return self.nombre_Profesor
 
@@ -56,5 +58,6 @@ class Asignar_Materia(models.Model):
 class AsignarCurso_Profesor(models.Model):
 	id_Profesor=models.ForeignKey(Profesor)
 	id_Curso=models.ForeignKey(Curso)
+	
 class director(models.Model):
 	nombre=models.CharField(max_length=30)

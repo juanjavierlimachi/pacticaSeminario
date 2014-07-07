@@ -4,7 +4,7 @@
 	<!--<link rel="stylesheet" type="text/css" media="screen" href="/static/css/todoProfe.css">-->
 <div id="asistencia">
 	<table border="1" align="center" class="tabla">
-		<tr><td style="background:#6E6E6E;color:#BDBDBD">Id: </td>
+		<tr>
 			<td style="background:#6E6E6E;color:#BDBDBD">Nombre(s)</td>
 			<td style="background:#6E6E6E;color:#BDBDBD">A Paterno</td>
 			<td style="background:#6E6E6E;color:#BDBDBD">A Materno</td>
@@ -13,8 +13,7 @@
 		</tr>
 		<form action='/RegAsistencias/'  enctype='multipart/form-data' >{% csrf_token %}
 		{% for a in alumno %}
-		<tr><td>{{a.id}}</td>
-					<td>{{a.Nombre_Alumno}}</td>
+		<tr><td>{{a.Nombre_Alumno}}</td>
 					<td>{{a.Apellido_Paterno}}</td>
 					<td>{{a.Apellido_Materno}}</td>
 					<td>{{a.ci}}</td>
