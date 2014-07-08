@@ -1,29 +1,8 @@
-
-
-<!--<table border="1" align="center">
-{% for cp in cursosP %}
-    {% for a in asig %}
-        {% for profe in clave %}
-				{% for materia in materias %}
-					{% for curso in cursos %}
-						{% if profe.id == a.id_Profesor_id and a.id_Materia_id == materia.id  %}
-
-							  {% if profe.id == cp.id_Profesor_id and cp.id_Curso_id == curso.id %}
-							  <tr><td>{{materia.nombre_Materia}}</td>
-								<td>{{curso.nombre_Curso}}</td></tr>
-								
-								{% endif %}
-						{% endif %}
-					{% endfor %}
-				{% endfor %}
-		{% endfor %}
-	{% endfor %}
-{% endfor %}
-</table> -->   
+ 
 <!DOCTYPE html>
 <html>
 	<head>
-		<title></title>
+		<title>Profesor</title>
 		<link rel="stylesheet" type="text/css" media="screen" href="/static/css/todoProf.css">
 
 	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
@@ -57,25 +36,6 @@
         $(" select, input, button").uniform();
     });
 </script>
-
-
-
-<!--<script type="text/javascript">
-$(document).ready(function(){
-
-	$("#ocultar").click(function(event){
-	  event.preventDefault();
-	  $("#capaefectos").hide("slow");
-	});
-
- 
-	$("#mostrar").click(function(event){
-	  event.preventDefault();
-	  $("#capaefectos").show(3000);
-	});
-});
-</script>-->
-
 </head>
 <body>
 	
@@ -100,12 +60,12 @@ $(document).ready(function(){
 
 	
 	
-	<div id="bienvenido"><h3>Bienvenido Prof. : {{u.nombre_Profesor}}</h3></div>
+	<div id="bienvenido"><h3>Bienvenido Prof. : {{u.nombre_Profesor}}</h3><a href="/Logout/">Serrar secion</a></div>
 	
 <div id="acordionProfe">
 	<h3><a href="#">Guia</a></h3>
 		<div>
-			<h6><strong>BIENVENIDO PROFESOR:</strong> Aqui usted podra seleccionar el curso que decea gestionar haciendo click en la misma, en la cual uste podra seleccionar las siguientes opciones<li>Registrar hacistencia</li><li>Registrar Notas</li><li>Ver Notas</li><li>Ver Asistencia</li><li>Ver Comentarios</li><a href="http://localhost:9595/validar/">seleccionar curso</a></h6>
+			<h6><strong>BIENVENIDO PROFESOR:</strong> Aqui usted podra seleccionar el curso que decea gestionar haciendo click en la misma, en la cual uste podra seleccionar las siguientes opciones<li>Registrar hacistencia</li><li>Registrar Notas</li><li>Ver Notas</li><li>Ver Asistencia</li><li>Ver Comentarios</li></h6>
 		</div>
 {% for cp in cursosP %}
 	{% for profe in clave %}
@@ -143,10 +103,10 @@ $(document).ready(function(){
 	<div>
 		<li>esto tambien no se para q sera</li>
 	</div>
-</div>
+</div>-->
 
-<!--<div id='capaefectos'>
-<table border="1" align="center">
+<div id='capaefectos'>
+<table border="1">
 	<td style="background:yellow;color:red">Mis Materias</td>
  {% for profe in clave %}
  	{% for a  in asig %}
@@ -158,17 +118,8 @@ $(document).ready(function(){
  	{% endfor %}
  {% endfor %}
 </table>
-</div>-->
-<!-- Estes es un menu talves vamos ha nesesitar
-<div class='menu'>
-	<ul>
-		<li><a href="">Noticas</a></li>
-		<li><a href="">Comiciones</a></li>
-		<li><a href="">Imagenes</a></li>
-		<li><a href="">Presidentes De Curso</a></li>
-	</ul>
-	
-</div>-->
+</div>
+
 <div id="header">
 {% block comentario %}
 {% endblock %}
@@ -192,8 +143,8 @@ $(document).ready(function(){
 {% block datosguardados %}
 {% endblock %}
 
-
-
+{% block editarAsistencias %}
+{% endblock %}
 
 {% block registroAsistencia %}
 {% endblock %}

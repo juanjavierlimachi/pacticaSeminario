@@ -1,14 +1,16 @@
 {% extends "profesor/ingreso.html" %}
-{% block editarnotas %}
+{% block editarAsistencias %}
+
 <link rel="stylesheet" type="text/css" media="screen" href="/static/css/table.css">
-	<br>
+	
 	<div id="editNotas">
-		<table border="1" align="center">
+		
 		<form action="" method="POST">{% csrf_token %}
-			{{formulario}}
+			<tr><td>{{formulario.as_p}}</td></tr>
 			<tr><td align="center"><input type="submit" value="Guardar"/>
 			<input type="reset" name="cancelar" value="Cancelar"></td></tr>
 		</form>
-		</table>
+		
 	</div>
-	{% endblock %}
+
+{% endblock %}

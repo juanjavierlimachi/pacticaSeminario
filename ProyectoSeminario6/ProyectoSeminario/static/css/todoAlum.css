@@ -32,7 +32,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4b357', end
 }
 #bienvenido{
 	margin-top: 20px;
-	width: 200px;
+	width: 750px;
 	height: 50px;
 	border-radius: 10px;
 	background: -moz-linear-gradient(top,  rgba(30,87,153,1) 0%, rgba(125,185,232,0.21) 79%, rgba(125,185,232,0) 100%); /* FF3.6+ */

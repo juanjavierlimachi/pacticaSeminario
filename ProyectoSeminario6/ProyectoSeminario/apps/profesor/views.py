@@ -21,8 +21,8 @@ def validar(request):
 		user=request.POST['usr']
 		p=request.POST['pas']
 		try:
-			u=Profesor.objects.get(nombre_Profesor=user) #estoy verificando si existe  de la secretaria
-			clave=Profesor.objects.filter(id=p) #optengo en id de la secretaria
+			u=Profesor.objects.get(nombre_Profesor=user) #estoy verificando si existe  de la profesor
+			clave=Profesor.objects.filter(id=p) #optengo en id de la profesor
 			asig=Asignar_Materia.objects.all()
 			cursosP=AsignarCurso_Profesor.objects.all() 
 			materias=Materia.objects.all()
@@ -99,10 +99,21 @@ def editarNota(request,id):
 		if formulario.is_valid():
 			n=formulario.save()
 			n.save()
-			return HttpResponseRedirect('/notasC/1/')
+			return HttpResponseRedirect('/guardado/')
 	else:
 		formulario=NotasForm(instance=nota)
 	return render_to_response('profesor/EditarNotas.html',{'formulario':formulario}, RequestContext(request))
+def editarAsistencias(request,id): #nueva funcion
+	nota=Asistencia.objects.get(id=id)
+	if request.method=='POST':
+		formulario=NotasForm(request.POST, instance=nota)
+		if formulario.is_valid():
+			n=formulario.save()
+			n.save()
+			return HttpResponseRedirect('/guardado/')
+	else:
+		formulario=NotasForm(instance=nota)
+	return render_to_response('profesor/EditarAsistencias.html',{'formulario':formulario}, RequestContext(request))
 def VerAsistencia(request,id):
 	alumno=Alumno.objects.filter(idCurso_id=id)
 	curso=Curso.objects.get(id=id)
@@ -133,7 +144,7 @@ def EditarComent(request,id): #nueva funcion
 		if formulario.is_valid():
 			c=formulario.save()
 			c.save()
-			return HttpResponseRedirect('//')
+			return HttpResponseRedirect('/VerComents/1/')
 	else:
 		formulario=FormComentarios(instance=comentario)
 	return render_to_response('profesor/editComentario.html',{'formulario':formulario},RequestContext(request))
@@ -141,14 +152,14 @@ def EditarComent(request,id): #nueva funcion
 def EliminarComent(request,id):
 	comentario=Comentarios.objects.get(id=id)
 	comentario.delete()
-	return HttpResponseRedirect('/VerComents/1/')
+	return HttpResponseRedirect('/guardado/')
 #def EditarAsistencia(request):
 def RegistroAsistencia(request):
 	if request.method=='POST':
 		formulario=FormAsistencia(request.POST)
 		if formulario.is_valid():
 			formulario.save()
-			return HttpResponseRedirect('//')
+			return HttpResponseRedirect('/guardado/')
 	else:
 		formulario=FormAsistencia()
 	return render_to_response('profesor/RegistroAsistencia.html',{'formulario':formulario}, context_instance=RequestContext(request))
@@ -157,7 +168,14 @@ def RegistratNotas(request):
 		formulario=FormNotas(request.POST)
 		if formulario.is_valid():
 			formulario.save()
-			return HttpResponseRedirect('//')
+			return HttpResponseRedirect('/guardado/')
 	else:
 		formulario=FormNotas()
 	return render_to_response('profesor/RegistratNotas.html',{'formulario':formulario}, context_instance=RequestContext(request))
+
+def Logout(request):
+	try:
+		del request.session['ci']
+	except KeyError:
+		pass
+	return HttpResponseRedirect('/cerrar/')

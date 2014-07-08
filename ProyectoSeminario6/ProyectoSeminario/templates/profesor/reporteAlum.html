@@ -2,10 +2,11 @@
 <div>
 <table border="1" align="center">
 	<tr>
-			<td style="background:green;color:yellow">Nombre(s)</td>
-			<td style="background:green;color:yellow">A. Paterno</td>
-			<td style="background:green;color:yellow">A. Materno</td>
-			<td style="background:green;color:yellow">Ci:</td>
+			<td align="center" style="background:green;color:yellow">Nombre(s)</td>
+			<td align="center" style="background:green;color:yellow">A. Paterno</td>
+			<td align="center"  style="background:green;color:yellow">A. Materno</td>
+			<td align="center"  style="background:green;color:yellow">Ci:</td>
+			<td align="center" style="background:green;color:yellow">Curso:</td>
 		</tr>
 	{% for a in alum %}
 		{% for c in curso %}
@@ -15,6 +16,7 @@
 					<td>{{a.Apellido_Paterno}}</td>
 					<td>{{a.Apellido_Materno}}</td>
 					<td>{{a.ci}}</td>
+					<td>{{c.nombre_Curso}}</td>
 				</tr>
 			{% endif %}
 		{% endfor %}

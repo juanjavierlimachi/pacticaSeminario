@@ -58,7 +58,7 @@ def privado(request):
 	usuario=request.user
 	return render_to_response('director/inicio.html',{'usuario':usuario}, context_instance=RequestContext())
 #	return HttpResponseRedirect('http://localhost:9595/inicio')
-#@login_required(login_url='/ingresar')
+@login_required(login_url='/ingresar')
 def cerrar(request):
 	logout(request)
-	return HttpResponseRedirect('http://localhost:9595/')
+	return HttpResponseRedirect('/cerrar/')

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+    <title>Alumno</title>
     <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" media="screen" href="/static/css/todoAlum.css">
 
@@ -45,9 +45,9 @@ Una de las restricciones que se pueden aplicar a las computadoras de la escuela 
 	</div>
 
 <div id="izquierdo">
-	<div id="bienvenido"><h3>Bienvinido: {{u.Nombre_Alumno}}</h3></div>
+	<div id="bienvenido"><h4>Bienvinido: {{u.Nombre_Alumno}} En fecha {{now}}</h4></div>
 <div>
-	
+	<a href="/Cerrarsecion/">Cerrar secion</a>
 	<div>{% for c in curso %}
 		{% for a in alumno %}
 			{% if c.id == a.idCurso_id %}
@@ -104,8 +104,9 @@ Una de las restricciones que se pueden aplicar a las computadoras de la escuela 
 </table>
 </div>
 <table border="1">
-	<div>
+	<div>	
 	<h3 ><a href="#">VER ASISTENCIA</a></h3>
+	<tr><td>Asistencias</td><td>Fecha</td><td>Materia</td></tr>
 	{% for a in alumno %}
 		{% for m in materias %}
 			{% for asist in asistencia %}
@@ -134,3 +135,4 @@ Una de las restricciones que se pueden aplicar a las computadoras de la escuela 
 
 </div>	
 </body>
+</html>

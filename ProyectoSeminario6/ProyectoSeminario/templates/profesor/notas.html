@@ -8,9 +8,10 @@
 	<table border ="1" align="center">
 		<tr>
 			<td style="background:#A4A4A4;color:#D8D8D8">Nombre(s)</td>
-			<td style="background:#A4A4A4;color:#D8D8D8">A Paterno</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">A. Materno</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">A. Paterno</td>
 			<td style="background:#A4A4A4;color:#D8D8D8">Ci:</td>
-			<td style="background:#A4A4A4;color:#D8D8D8">Nombre Materia</td>
+			<td style="background:#A4A4A4;color:#D8D8D8">Materia</td>
 			<td style="background:#A4A4A4;color:#D8D8D8">Bimestre 1</td>
 			<td style="background:#A4A4A4;color:#D8D8D8">Bimestre 2</td>
 			<td style="background:#A4A4A4;color:#D8D8D8">Bimestre 3</td>
@@ -23,6 +24,7 @@
 				{% if a.id == n.id_Alumno_id and n.id_Materia_id == m.id %}
 				<tr><td>{{a.Nombre_Alumno}}</td>
 					<td>{{a.Apellido_Paterno}}</td>
+					<td>{{a.Apellido_Materno}}</td>
 					<td>{{a.ci}}</td>
 					<td>{{m.nombre_Materia}}</td>
 					<td>{{n.Bimentre_1}}</td>

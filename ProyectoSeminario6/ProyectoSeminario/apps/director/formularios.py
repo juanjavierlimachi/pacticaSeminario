@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.forms import ModelForm
 from django import forms
-from .models import Alumno, Materia ,Profesor,Curso,Asignar_Materia,Materia_Curso,AsignarCurso_Profesor
+from .models import *
 from django.contrib.auth.models import User
 
 from django.forms.extras.widgets import SelectDateWidget

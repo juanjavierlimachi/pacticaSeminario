@@ -43,4 +43,5 @@ urlpatterns = patterns('',
 
     url(r'^DesCursoPro/(?P<id>\d+)/$',DesCursoPro),  #nueva url desavilitar curso del profesor
     url(r'^buscador/',buscar),
+    url(r'^Reportes/(?P<id>\d+)/$',Reportes),#tambien el director puede imprimir la lista de alumno por curso
 )

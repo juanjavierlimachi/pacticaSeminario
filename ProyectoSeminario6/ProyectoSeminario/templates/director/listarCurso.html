@@ -20,11 +20,11 @@
 	<tr><td>Nomina de Cusros</td></tr>
 	{% for curso in cursos %}
 	<tr><td>{{curso.nombre_Curso}}</td>
-		<td><a href="http://localhost:9595/editarCurso/{{curso.id}}/"><input type="submit" name="bregistro" value="editar"></a></td>
+		<td><a href="/editarCurso/{{curso.id}}/"><input type="submit" name="bregistro" value="editar"></a></td>
 		<td><a href="/borrarCurso/{{curso.id}}/"><input type="submit" name="bregistro" value="eliminar"></a></td>
 		<td><a href="/VerAlumnos/{{curso.id}}/"><input type="submit" name="bregistro" value="ver alumnos"></a></td>
 		<td><a href="/Materias/{{curso.id}}/"><input type="submit" name="bregistro" value="ver materias del curso"></a></td>
-		
+		<td><a href="/Reportes/{{curso.id}}/"><input type="submit" name="bregistro" value="Imprimir"></a></td>
 	</tr>
 	{% endfor %}
 	</table>

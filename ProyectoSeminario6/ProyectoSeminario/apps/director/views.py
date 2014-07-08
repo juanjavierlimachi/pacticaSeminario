@@ -1,7 +1,7 @@
 from django.shortcuts import render, render_to_response
 from django.http import  HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
-from .formularios import  AlumnoForm,MatariaForm,ProfesorForm,CursoForm,MateriasForm,buscarForm,asignarForm,editProForm,editCursoForm,editAlumForm,AsigCursosForm,regisArchivoForm,CursoProForm,loguinForm
+from .formularios import  *
 from .models import *
 # Create your views here.
 from django.db.models import Q
@@ -15,14 +15,18 @@ import pdb
 import os
 import csv
 import datetime
+import StringIO
+from xhtml2pdf import pisa
+from django.template.loader import render_to_string
 
 from django.views.generic import TemplateView
 def inicio(request):
-	
+	now = datetime.datetime.now()	
 	#return render_to_response('profesorIndex.html')
-	return render_to_response('director/inicio.html')
+	return render_to_response('director/inicio.html',{'now':now},RequestContext(request))
 def base(request):
-	return render_to_response('base.html')
+	now = datetime.datetime.now()
+	return render_to_response('base.html',{'now':now},RequestContext(request))
 
 def AsignacionExito(request):
 	return render_to_response('director/Asig_exito.html',{},context_instance=RequestContext(request))
@@ -222,6 +226,19 @@ def VerAlumnos(request,id): # para ver los alumnos por curso
 	curso=Curso.objects.filter(id=id)
 	alumnos=Alumno.objects.all()
 	return render_to_response('director/VerAlumnos.html',{'alumnos':alumnos,'curso':curso},context_instance=RequestContext(request))
+def Reportes(request,id): #ya es filtrando los alumnos por curso
+	curso=Curso.objects.filter(id=id)
+	alum=Alumno.objects.filter(idCurso_id=id)
+	html=render_to_string("profesor/reporteAlum.html",{'pagesiza':'A4','alum':alum,'curso':curso},context_instance=RequestContext(request))
+	return generar_pdf(html)
+
+def generar_pdf(html):
+	resultado=StringIO.StringIO()
+	pdf=pisa.pisaDocument(StringIO.StringIO(html.encode("UTF:8")),resultado)
+	if not pdf.err:
+		return HttpResponse(resultado.getvalue(),mimetype='application/pdf')
+	return HttpResponse("error al generar el archivo")
+
 def asignarCursos(request):
 	if request.method=='POST':
 		formulario=AsigCursosForm(request.POST)
@@ -304,7 +321,7 @@ def validar(request):
 		formulario=loguinForm()
 	return render_to_response('director/logeo.html',{'formulario':formulario}, context_instance=RequestContext(request))
 
-def DesCursoPro(request,id): #estmos dessabilitando el curso del profesorrrrrrr
+def DesCursoPro(request,id): #estmos dessabilitando el curso del profesor
 	a=AsignarCurso_Profesor.objects.get(id=id)
 	a.delete()
 	return HttpResponseRedirect('/Darbaja/')
