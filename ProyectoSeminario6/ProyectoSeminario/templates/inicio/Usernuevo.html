@@ -19,8 +19,8 @@
 <h3 align="center">NUEVO USUARIO</h3>
 <table=border="1">
 <form id="formulario" method='POST' action=''>{% csrf_token %}
-	<tr><td>{{formulario.as_p}}</td></tr>
-	<tr><td><input type="submit" value="Registrar"></td></tr>
+{{formulario.as_p}}
+	<input type="submit" value="Registrar"><input type="reset" value="Cancelar">
 </form>
 <div id="resultado">
                 
